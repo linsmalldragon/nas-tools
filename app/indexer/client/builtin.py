@@ -164,14 +164,14 @@ class BuiltinIndexer(_IIndexClient):
         # 计算耗时
         start_time = datetime.datetime.now()
 
-        log.info(f"【{self.client_name}】开始搜索Indexer：{indexer.name} ...")
+        log.info(f"【{self.client_name}】[{indexer.parser}] 开始搜索Indexer：{indexer.name} ...")
         # 特殊符号处理
         search_word = StringUtils.handler_special_chars(text=key_word,
                                                         replace_word=" ",
                                                         allow_space=True)
         # 避免对英文站搜索中文
         if indexer.language == "en" and StringUtils.is_chinese(search_word):
-            log.warn(f"【{self.client_name}】[{indexer.parser}] {indexer.name} 无法使用中文名搜索")
+            log.warn(f"【{self.client_name}】{indexer.name} 无法使用中文名搜索")
             return []
         # 开始索引
         result_array = []
