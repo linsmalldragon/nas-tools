@@ -171,7 +171,7 @@ class BuiltinIndexer(_IIndexClient):
                                                         allow_space=True)
         # 避免对英文站搜索中文
         if indexer.language == "en" and StringUtils.is_chinese(search_word):
-            log.warn(f"【{self.client_name}】{indexer.name} 无法使用中文名搜索")
+            log.warn(f"【{self.client_name}】[{indexer.parser}] {indexer.name} 无法使用中文名搜索")
             return []
         # 开始索引
         result_array = []
