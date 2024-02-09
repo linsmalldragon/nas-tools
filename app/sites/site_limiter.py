@@ -24,11 +24,11 @@ class SiteRateLimiter:
         # 防问间隔时间
         if self.limit_seconds:
             if current_time - self.last_visit_time < self.limit_seconds:
-                wait_time = self.limit_seconds- current_time - self.last_visit_time
-                if wait_time>0:
+                wait_time = self.limit_seconds - current_time - self.last_visit_time
+                if wait_time > 0:
                     time.sleep(wait_time)
                 return False, f"触发流控规则，访问间隔不得小于 {self.limit_seconds} 秒，线程等待{wait_time}秒" \
-                             f"上次访问时间：{time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(self.last_visit_time))}"
+                              f"上次访问时间：{time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(self.last_visit_time))}"
         # 单位时间内访问次数
         # if self.limit_interval and self.limit_count:
         #     if current_time - self.last_visit_time > self.limit_interval:
