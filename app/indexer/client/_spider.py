@@ -646,6 +646,11 @@ class TorrentSpider(feapder.AirSpider):
                 self.is_error = True
                 self.is_complete = True
                 return
+            if "请求太频繁" in html_text:
+                log.error(html_text)
+                self.is_error = True
+                self.is_complete = True
+                return
             # 解析站点文本对象
             html_doc = PyQuery(html_text)
             # 种子筛选器
