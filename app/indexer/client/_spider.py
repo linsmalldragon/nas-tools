@@ -646,7 +646,7 @@ class TorrentSpider(feapder.AirSpider):
                 self.is_error = True
                 self.is_complete = True
                 return
-            if "请求太频繁" in html_text:
+            if "请求太频繁" in html_text or "请求过于频繁" in html_text:
                 log.error(html_text)
                 self.is_error = True
                 self.is_complete = True
